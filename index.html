@@ -32,7 +32,7 @@ nav{
 }
 
 .hero{
-    min-height:70vh;
+    min-height:60vh;
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -52,7 +52,14 @@ nav{
     color:#9a9a9a;
     font-size:22px;
     line-height:1.7;
+    margin-bottom:25px;
+}
+
+.mini-text{
+    color:#666;
+    font-size:14px;
     margin-bottom:40px;
+    letter-spacing:1px;
 }
 
 .btn{
@@ -83,7 +90,7 @@ nav{
     display:grid;
     grid-template-columns:repeat(2,1fr);
     gap:25px;
-    max-width:900px;
+    max-width:1000px;
     margin:auto;
 }
 
@@ -95,17 +102,19 @@ nav{
     transition:all .35s ease;
     cursor:pointer;
     overflow:hidden;
+    backdrop-filter:blur(10px);
 }
 
 .card:hover{
-    transform:translateY(-8px);
-    border-color:#333;
+    transform:translateY(-8px) scale(1.02);
+    border-color:#ffffff25;
+    background:#151515;
 }
 
 .card.active{
-    transform:scale(1.03);
-    background:#151515;
+    transform:translateY(-8px) scale(1.02);
     border-color:#ffffff25;
+    background:#151515;
 }
 
 .card h3{
@@ -125,6 +134,7 @@ nav{
     margin-top:0;
 }
 
+.card:hover .details,
 .card.active .details{
     max-height:400px;
     opacity:1;
@@ -132,8 +142,8 @@ nav{
 }
 
 .details p{
-    margin-bottom:12px;
     color:#cfcfcf;
+    margin-bottom:12px;
 }
 
 .why{
@@ -195,6 +205,10 @@ footer h2{
     <p>
         İşletmeler için yapay zeka çözümleri, müşteri iletişim sistemleri ve iş süreçlerini otomatikleştiren modern çözümler geliştiriyoruz.
     </p>
+
+    <div class="mini-text">
+        Built for modern businesses.
+    </div>
 
     <a href="#" class="btn">İletişime Geç</a>
 
@@ -276,12 +290,16 @@ footer h2{
 
     <h2>Automate. Scale. Grow.</h2>
 
+    <p>Built for modern businesses.</p>
+    <br>
     <p>wexalabs.com</p>
 
 </footer>
 
 <script>
 function toggleCard(card){
+
+    if(window.innerWidth > 768) return;
 
     document.querySelectorAll('.card').forEach(c=>{
         if(c!==card){
