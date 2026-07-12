@@ -310,6 +310,152 @@ function toggleCard(card){
     card.classList.toggle('active');
 }
 </script>
+    <!-- WexaLabs Advisor -->
+
+<div id="chat-button" onclick="toggleChat()">
+    ✨
+</div>
+
+<div id="chat-box">
+    <div class="chat-header">
+        Hangi hizmetin size uygun olduğunu keşfedin.
+    </div>
+
+    <div class="chat-content">
+        <p><b>İşletmenizde en çok zaman kaybettiren süreç hangisi?</b></p>
+
+        <button onclick="showResult('wp')">Müşteri mesajlarına dönüş yapmak</button>
+        <button onclick="showResult('automation')">Tekrarlayan işler</button>
+        <button onclick="showResult('appointment')">Randevu yönetimi</button>
+        <button onclick="showResult('tracking')">Müşteri takibi</button>
+
+        <div id="result"></div>
+    </div>
+</div>
+
+<style>
+#chat-button{
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    background:white;
+    color:black;
+    font-size:28px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+    z-index:9999;
+}
+
+#chat-box{
+    position:fixed;
+    bottom:110px;
+    right:30px;
+    width:380px;
+    background:#101010;
+    border:1px solid #222;
+    border-radius:25px;
+    overflow:hidden;
+    display:none;
+    z-index:9999;
+}
+
+.chat-header{
+    padding:25px;
+    font-size:20px;
+    font-weight:600;
+    border-bottom:1px solid #222;
+}
+
+.chat-content{
+    padding:25px;
+}
+
+.chat-content p{
+    margin-bottom:20px;
+    color:#d0d0d0;
+}
+
+.chat-content button{
+    width:100%;
+    padding:15px;
+    margin-bottom:12px;
+    border:none;
+    border-radius:12px;
+    background:#1a1a1a;
+    color:white;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.chat-content button:hover{
+    background:#252525;
+}
+
+#result{
+    margin-top:20px;
+    color:#bdbdbd;
+    line-height:1.8;
+}
+</style>
+
+<script>
+function toggleChat(){
+    const box = document.getElementById("chat-box");
+
+    if(box.style.display==="block"){
+        box.style.display="none";
+    }else{
+        box.style.display="block";
+    }
+}
+
+function showResult(type){
+
+    let result="";
+
+    if(type==="wp"){
+        result=`
+        <b>Önerilen Çözüm:</b><br><br>
+        ✓ WhatsApp Otomasyonları<br>
+        ✓ Instagram Otomasyonları<br>
+        ✓ AI Agent Çözümleri
+        `;
+    }
+
+    if(type==="automation"){
+        result=`
+        <b>Önerilen Çözüm:</b><br><br>
+        ✓ İş Süreci Otomasyonları<br>
+        ✓ CRM Entegrasyonları<br>
+        ✓ Özel AI Çözümleri
+        `;
+    }
+
+    if(type==="appointment"){
+        result=`
+        <b>Önerilen Çözüm:</b><br><br>
+        ✓ AI Randevu Asistanları<br>
+        ✓ WhatsApp Otomasyonları
+        `;
+    }
+
+    if(type==="tracking"){
+        result=`
+        <b>Önerilen Çözüm:</b><br><br>
+        ✓ CRM Entegrasyonları<br>
+        ✓ Özel AI Çözümleri
+        `;
+    }
+
+    document.getElementById("result").innerHTML=result;
+}
+</script>
 
 </body>
 </html>
